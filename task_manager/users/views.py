@@ -47,7 +47,8 @@ class UserDeleteView(DeleteView):
     template_name = 'delete_user.html'
     success_url = _('userlist')
     extra_context = {
-        'title': gettext_lazy('Users'),
+        'title': gettext_lazy('Delete user'),
+        'button_text': gettext_lazy('Yes, delete'),
     }
 
     def get_queryset(self):
