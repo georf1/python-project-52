@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 
 
 class TasksListView(ListView):
-    template_name = 'tasklist.html'
+    template_name = 'list_task.html'
 
     def get_queryset(self):
         return Task.objects.all()

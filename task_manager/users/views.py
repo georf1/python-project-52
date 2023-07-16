@@ -11,7 +11,7 @@ from task_manager.users.forms import UserUpdateForm
 
 
 class UsersListView(ListView):
-    template_name = 'userlist.html'
+    template_name = 'list_user.html'
     login_url = '/login/'
     redirect_field_name = 'user_list'
 

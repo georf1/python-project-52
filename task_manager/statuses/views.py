@@ -9,7 +9,7 @@ from task_manager.statuses.forms import StatusForm
 
 
 class StatusesListView(ListView):
-    template_name = 'statuslist.html'
+    template_name = 'list_status.html'
 
     def get_queryset(self):
         return Status.objects.all()
