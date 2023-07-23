@@ -1,6 +1,6 @@
 from django.urls import reverse_lazy as _
 from django.utils.translation import gettext_lazy
-from django.views.generic.list import ListView
+from django_filters.views import FilterView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.views.generic.edit import UpdateView
@@ -8,13 +8,19 @@ from django.views.generic.edit import DeleteView
 from task_manager.tasks.models import Task
 from task_manager.tasks.forms import TaskForm
 from django.contrib.auth.models import User
+from task_manager.tasks.filters import TaskFilter
 
 
-class TasksListView(ListView):
+class TasksListView(FilterView):
     template_name = 'list_task.html'
+    model = Task
+    filterset_class = TaskFilter
+    context_object_name = 'tasks'
+    extra_context = {
+        'title': gettext_lazy('Tasks'),
+        'button_text': gettext_lazy('Show'),
+    }
 
-    def get_queryset(self):
-        return Task.objects.all()
 
 
 class TaskDetailView(DetailView):
